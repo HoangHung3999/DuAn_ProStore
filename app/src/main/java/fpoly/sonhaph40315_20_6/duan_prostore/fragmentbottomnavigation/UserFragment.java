@@ -29,7 +29,7 @@ public class UserFragment extends Fragment {
 
     private LinearLayout settingContainer;
 
-    private TextView txt_title_user;
+    private TextView txt_title_user1;
 
     private ImageButton img_btn_back_user;
 
@@ -40,7 +40,7 @@ public class UserFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_user, container, false);
         settingContainer = view.findViewById(R.id.settingContainer);
 
-        txt_title_user = view.findViewById(R.id.txt_title_user);
+        txt_title_user1 = view.findViewById(R.id.txt_title_user);
         img_btn_back_user = view.findViewById(R.id.img_btn_back_user);
         img_btn_back_user.setOnClickListener(new View.OnClickListener() {
             @Override
