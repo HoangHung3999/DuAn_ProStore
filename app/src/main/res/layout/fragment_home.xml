@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#111111"
+    tools:context=".fragmentbottomnavigation.HomeFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trang chủ"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true" />
+
+        <ImageView
+            android:id="@+id/ivUser"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_user"
+            android:contentDescription="User "
+            android:background="?attr/selectableItemBackgroundBorderless" />
+    </RelativeLayout>
+
+    <!-- Thanh tìm kiếm -->
+    <EditText
+        android:id="@+id/etSearch"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="Tìm kiếm sản phẩm..."
+        android:inputType="text"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#888888"
+        android:background="@drawable/bg_search"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="8dp" />
+
+
+    <TextView
+        android:id="@+id/tvSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tìm quần áo yêu thích nhất của bạn"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Tabs All | Nam | Nữ | Trẻ em -->
+    <LinearLayout
+        android:id="@+id/layoutTabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:id="@+id/tvAll"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="All"
+            android:padding="8dp"
+            android:gravity="center"
+            android:textColor="#D17842"
+            android:textSize="16sp"
+            android:background="@drawable/bg_tab_text"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <TextView
+            android:id="@+id/tvNam"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Nam"
+            android:padding="8dp"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:background="@drawable/bg_tab_text"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <TextView
+            android:id="@+id/tvNu"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Nữ"
+            android:padding="8dp"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:background="@drawable/bg_tab_text"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <TextView
+            android:id="@+id/tvTreEm"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Trẻ em"
+            android:padding="8dp"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:background="@drawable/bg_tab_text"
+            android:clickable="true"
+            android:focusable="true" />
+    </LinearLayout>
+
+
+    <!-- Danh sách sản phẩm -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvProducts"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:clipToPadding="false" />
+
+<!--    &lt;!&ndash; Thanh điều hướng dưới &ndash;&gt;-->
+<!--    <LinearLayout-->
+<!--        android:id="@+id/bottomNav"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="56dp"-->
+<!--        android:background="#1E1E1E"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:weightSum="4">-->
+
+<!--        <ImageButton-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:src="@drawable/home"-->
+<!--            android:contentDescription="Home"-->
+<!--            android:background="?attr/selectableItemBackgroundBorderless"-->
+<!--            android:tint="#D17842" />-->
+
+<!--        <ImageButton-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:src="@drawable/sanpham"-->
+<!--            android:contentDescription="Sản phẩm"-->
+<!--            android:background="?attr/selectableItemBackgroundBorderless"-->
+<!--            android:tint="#888888" />-->
+
+<!--        <ImageButton-->
+<!--            android:id="@+id/btnCart"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:src="@drawable/giohang"-->
+<!--            android:contentDescription="Giỏ hàng"-->
+<!--            android:background="?attr/selectableItemBackgroundBorderless"-->
+<!--            android:tint="#888888" />-->
+
+<!--        <ImageButton-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:src="@drawable/canhan"-->
+<!--            android:contentDescription="Cá nhân"-->
+<!--            android:background="?attr/selectableItemBackgroundBorderless"-->
+<!--            android:tint="#888888" />-->
+<!--    </LinearLayout>-->
+</LinearLayout>

@@ -1,0 +1,38 @@
+<!-- res/layout/bottom_navigation.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="#1E1E1E"
+    android:gravity="center">
+    <ImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_home"
+        android:tint="#D17842"
+        android:layout_margin="16dp" />
+
+    <ImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/sanpham"
+        android:tint="#D17842"
+        android:layout_margin="16dp" />
+    <ImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/giohang"
+        android:tint="#D17842"
+        android:layout_margin="16dp" />
+
+    <ImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/canhan"
+        android:tint="#D17842"
+        android:layout_margin="16dp" />
+
+
+
+
+</LinearLayout>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/itemCartLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    android:background="#1E1E1E"
+    android:layout_marginBottom="8dp">
+
+    <!-- Ảnh sản phẩm -->
+    <ImageView
+        android:id="@+id/imgCartProduct"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/ic_kids1"
+        android:scaleType="centerCrop"
+        android:layout_marginEnd="12dp"/>
+
+    <!-- Thông tin sản phẩm -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvCartName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tên sản phẩm"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tvCartSize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Size: M"
+            android:textColor="#CCCCCC"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/tvCartPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="100,000 VND"
+            android:textColor="#D17842"
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+    <!-- Điều chỉnh số lượng -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/btnMinus"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_plus"
+
+            android:background="?attr/selectableItemBackgroundBorderless"/>
+
+        <TextView
+            android:id="@+id/tvQuantity"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:gravity="center"/>
+
+        <ImageView
+            android:id="@+id/btnPlus"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+
+            android:src="@drawable/ic_minus"
+            android:background="?attr/selectableItemBackgroundBorderless"/>
+    </LinearLayout>
+</LinearLayout>
