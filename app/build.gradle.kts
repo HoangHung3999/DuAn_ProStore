@@ -47,6 +47,7 @@ dependencies {
 
     // Glide (dùng thư viện alias từ libs.versions.toml)
     implementation(libs.glide)
+    implementation(libs.activity)
     annotationProcessor(libs.glide.compiler)
 
     // Unit testing

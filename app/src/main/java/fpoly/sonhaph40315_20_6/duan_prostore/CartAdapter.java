@@ -1,7 +1,7 @@
-// CartAdapter.java
 package fpoly.sonhaph40315_20_6.duan_prostore;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +11,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
+
+import fpoly.sonhaph40315_20_6.duan_prostore.model.SanPham;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder> {
 
@@ -20,10 +24,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     }
 
     private Context context;
-    private List<Product> cartItems;
+    private List<SanPham> cartItems;
     private OnCartChangedListener listener;
 
-    public CartAdapter(Context context, List<Product> cartItems, OnCartChangedListener listener) {
+    public CartAdapter(Context context, List<SanPham> cartItems, OnCartChangedListener listener) {
         this.context = context;
         this.cartItems = cartItems;
         this.listener = listener;
@@ -38,11 +42,21 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull CartViewHolder holder, int position) {
-        Product item = cartItems.get(position);
+        SanPham item = cartItems.get(position);
 
-        holder.imgProduct.setImageResource(item.getImageResId());
+        // Load ảnh từ imagePath (có thể là URI hoặc file path)
+        if (item.getImagePath() != null && !item.getImagePath().isEmpty()) {
+            holder.imgProduct.setImageURI(Uri.parse(item.getImagePath()));
+        } else {
+            holder.imgProduct.setImageResource(R.drawable.ic_product); // Ảnh mặc định
+        }
+
         holder.tvName.setText(item.getName());
-        holder.tvPrice.setText(item.getPrice());
+
+        // Format giá thành VND
+        NumberFormat formatter = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
+        holder.tvPrice.setText(formatter.format(item.getPrice()));
+
         holder.tvSize.setText("Size: " + item.getSize());
         holder.tvQuantity.setText(String.valueOf(item.getQuantity()));
 
@@ -50,12 +64,11 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             if (item.getQuantity() > 1) {
                 item.setQuantity(item.getQuantity() - 1);
                 notifyItemChanged(position);
-                listener.onCartUpdated();
             } else {
                 cartItems.remove(position);
                 notifyItemRemoved(position);
-                listener.onCartUpdated();
             }
+            listener.onCartUpdated();
         });
 
         holder.btnPlus.setOnClickListener(v -> {

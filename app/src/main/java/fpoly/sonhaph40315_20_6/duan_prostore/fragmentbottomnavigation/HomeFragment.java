@@ -13,36 +13,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import fpoly.sonhaph40315_20_6.duan_prostore.CartActivity;
-import fpoly.sonhaph40315_20_6.duan_prostore.HomeActivity;
-import fpoly.sonhaph40315_20_6.duan_prostore.Product;
-import fpoly.sonhaph40315_20_6.duan_prostore.ProductAdapter;
 import fpoly.sonhaph40315_20_6.duan_prostore.ProfileActivity;
 import fpoly.sonhaph40315_20_6.duan_prostore.R;
-
+import fpoly.sonhaph40315_20_6.duan_prostore.adapter.SanPhamAdapter;
+import fpoly.sonhaph40315_20_6.duan_prostore.model.SanPham;
 
 public class HomeFragment extends Fragment {
 
     private RecyclerView rcvProducts;
     private EditText etSearch;
-    private ProductAdapter adapter;
-    private List<Product> originalProductList;
+    private SanPhamAdapter adapter;
+    private List<SanPham> originalProductList;
     private String currentCategory = "All";
     private View view;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_home, container, false);
-
 
         rcvProducts = view.findViewById(R.id.rcvProducts);
         etSearch = view.findViewById(R.id.etSearch);
@@ -50,34 +44,28 @@ public class HomeFragment extends Fragment {
         setupProductList();
         setupSearch();
         setupCategoryTabs();
-//        setupCartButton();
-        setupProfileButton(); // Thêm dòng này
+        setupProfileButton();
 
         return view;
     }
 
     private void setupProductList() {
         originalProductList = new ArrayList<>();
-        originalProductList.add(new Product(R.drawable.ic_kids1, "Áo trẻ em", "119,000 VND", "Kids"));
-        originalProductList.add(new Product(R.drawable.ic_kids2, "Áo thể thao nam", "139,000 VND", "Men"));
-        originalProductList.add(new Product(R.drawable.ic_kids3, "Quần đùi nam", "99,000 VND", "Men"));
-        originalProductList.add(new Product(R.drawable.ic_kids4, "Áo trễ vai nữ", "159,000 VND", "Women"));
+        // id, name, price, quantity, size, category, imagePath, date
+        originalProductList.add(new SanPham(1, "Áo trẻ em", 119000, 1, "M", "Kids", String.valueOf(R.drawable.ic_kids1), "2025-08-09"));
+        originalProductList.add(new SanPham(2, "Áo thể thao nam", 139000, 1, "L", "Men", String.valueOf(R.drawable.ic_kids2), "2025-08-09"));
+        originalProductList.add(new SanPham(3, "Quần đùi nam", 99000, 1, "XL", "Men", String.valueOf(R.drawable.ic_kids3), "2025-08-09"));
+        originalProductList.add(new SanPham(4, "Áo trễ vai nữ", 159000, 1, "S", "Women", String.valueOf(R.drawable.ic_kids4), "2025-08-09"));
 
-        adapter = new ProductAdapter(getContext(), originalProductList);
+        adapter = new SanPhamAdapter(getContext(), originalProductList, true,null);
         rcvProducts.setLayoutManager(new GridLayoutManager(getContext(), 2));
         rcvProducts.setAdapter(adapter);
     }
 
     private void setupSearch() {
         etSearch.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-            }
-
+            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override public void afterTextChanged(Editable s) {}
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 filter(s.toString(), currentCategory);
@@ -126,28 +114,18 @@ public class HomeFragment extends Fragment {
     }
 
     private void filter(String query, String category) {
-        List<Product> filteredList = new ArrayList<>();
-
-        for (Product product : originalProductList) {
-            boolean matchesCategory = category.equals("All") || product.getCategory().equals(category);
+        List<SanPham> filteredList = new ArrayList<>();
+        for (SanPham product : originalProductList) {
+            boolean matchesCategory = category.equals("All") || product.getCategory().equalsIgnoreCase(category);
             boolean matchesQuery = product.getName().toLowerCase().contains(query.toLowerCase());
 
             if (matchesCategory && matchesQuery) {
                 filteredList.add(product);
             }
         }
-
         adapter.filterList(filteredList);
     }
 
-//    private void setupCartButton() {
-//        ImageButton btnCart = view.findViewById(R.id.btnCart);
-//        btnCart.setOnClickListener(v -> {
-//            startActivity(new Intent(getContext(), CartActivity.class));
-//        });
-//    }
-
-    // ✅ Mới thêm: Nút chuyển đến trang cá nhân
     private void setupProfileButton() {
         ImageView ivUser = view.findViewById(R.id.ivUser);
         ivUser.setOnClickListener(v -> {

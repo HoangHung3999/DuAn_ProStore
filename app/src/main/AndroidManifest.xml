@@ -12,6 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DuAn_ProStore">
         <activity
+            android:name=".AdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".useractivity.ProductReview_Activity"
             android:exported="false" />
         <activity
@@ -35,21 +47,24 @@
         <activity
             android:name=".HomeActivity"
             android:exported="false" />
-        <activity android:name=".ProductDetailActivity"
-            android:exported="false"/>
-        <activity android:name=".CartActivity"
-            android:exported="false"/>
-
-        <activity android:name=".PaymentActivity"
-            android:exported="false"/>
-        <activity android:name=".ProfileActivity"
-            android:exported="false"/>
         <activity
-            android:name=".MainActivity"
+            android:name=".ProductDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CartActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PaymentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".WelcomeActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

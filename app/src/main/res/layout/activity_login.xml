@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0C0C0C">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="24dp">
+
+        <!-- Logo -->
+        <ImageView
+            android:id="@+id/imgLogo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/logo"
+            android:contentDescription="Logo"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Tên app & slogan -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PROSTORE"
+            android:textColor="#F7B13F"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SLOGAN HERE"
+            android:textColor="#F7B13F"
+            android:textSize="14sp"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Chào mừng -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome to PROSTORE!!"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Login to Continue"
+            android:textColor="#AAAAAA"
+            android:textSize="14sp"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Email -->
+        <EditText
+            android:id="@+id/edtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Email Address"
+            android:inputType="textEmailAddress"
+            android:background="@drawable/bg_input"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#888888"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Password -->
+        <EditText
+            android:id="@+id/edtPassword"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:background="@drawable/bg_input"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#888888"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:drawableEnd="@drawable/ic_eye"
+            android:drawableRight="@drawable/ic_eye"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Nút Đăng nhập -->
+        <Button
+            android:id="@+id/btnSignIn"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Sign In"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/bg_button_orange"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Nút Google -->
+        <Button
+            android:id="@+id/btnGoogle"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Sign in with Google"
+            android:textColor="#000000"
+            android:drawableStart="@drawable/ic_google"
+            android:backgroundTint="#FFFFFF"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Register -->
+        <TextView
+            android:id="@+id/txtRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Don’t have account? Click Register"
+            android:textColor="#F78C40"
+            android:textSize="14sp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Reset password -->
+        <TextView
+            android:id="@+id/txtReset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Forget Password? Click Reset"
+            android:textColor="#F78C40"
+            android:textSize="14sp" />
+        <!-- Remember -->
+        <CheckBox
+            android:id="@+id/chkRemember"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remember me"
+            android:textColor="#AAAAAA"
+            android:layout_marginBottom="16dp"/>
+
+    </LinearLayout>
+</ScrollView>

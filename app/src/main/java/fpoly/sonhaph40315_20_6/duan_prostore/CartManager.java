@@ -3,10 +3,12 @@ package fpoly.sonhaph40315_20_6.duan_prostore;
 import java.util.ArrayList;
 import java.util.List;
 
+import fpoly.sonhaph40315_20_6.duan_prostore.model.SanPham;
+
 public class CartManager {
 
     private static CartManager instance;
-    private final List<Product> cartItems;
+    private final List<SanPham> cartItems;
 
     private CartManager() {
         cartItems = new ArrayList<>();
@@ -19,9 +21,10 @@ public class CartManager {
         return instance;
     }
 
-    public void addToCart(Product product) {
-        for (Product item : cartItems) {
-            if (item.getName().equals(product.getName()) && item.getSize().equals(product.getSize())) {
+    public void addToCart(SanPham product) {
+        for (SanPham item : cartItems) {
+            if (item.getName().equals(product.getName()) &&
+                    item.getSize().equals(product.getSize())) {
                 item.setQuantity(item.getQuantity() + 1);
                 return;
             }
@@ -31,9 +34,10 @@ public class CartManager {
         cartItems.add(product);
     }
 
-    public void removeFromCart(Product product) {
-        for (Product item : cartItems) {
-            if (item.getName().equals(product.getName()) && item.getSize().equals(product.getSize())) {
+    public void removeFromCart(SanPham product) {
+        for (SanPham item : cartItems) {
+            if (item.getName().equals(product.getName()) &&
+                    item.getSize().equals(product.getSize())) {
                 if (item.getQuantity() > 1) {
                     item.setQuantity(item.getQuantity() - 1);
                 } else {
@@ -48,15 +52,14 @@ public class CartManager {
         cartItems.clear();
     }
 
-    public List<Product> getCartItems() {
-        return new ArrayList<>(cartItems);
+    public List<SanPham> getCartItems() {
+        return new ArrayList<>(cartItems); // Tránh sửa trực tiếp danh sách gốc
     }
 
     public double getTotalAmount() {
         double total = 0;
-        for (Product item : cartItems) {
-            total += Double.parseDouble(item.getPrice()) * item.getQuantity();
-
+        for (SanPham item : cartItems) {
+            total += item.getPrice() * item.getQuantity();
         }
         return total;
     }

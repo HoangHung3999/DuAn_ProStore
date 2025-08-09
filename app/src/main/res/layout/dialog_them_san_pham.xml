@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Tên -->
+        <EditText
+            android:id="@+id/edtName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Tên sản phẩm"
+            android:padding="16dp"
+            android:inputType="text" />
+
+        <!-- Giá -->
+        <EditText
+            android:id="@+id/edtPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Giá sản phẩm"
+            android:padding="16dp"
+            android:inputType="numberDecimal" />
+
+        <!-- Số lượng -->
+        <EditText
+            android:id="@+id/edtQuantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Số lượng"
+            android:padding="16dp"
+            android:inputType="number" />
+
+        <!-- Size -->
+        <EditText
+            android:id="@+id/edtSize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Size"
+            android:padding="16dp"
+            android:inputType="text" />
+
+        <!-- Danh mục -->
+        <EditText
+            android:id="@+id/edtCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:hint="Danh mục"
+            android:inputType="text" />
+
+        <!-- Link ảnh -->
+        <EditText
+            android:id="@+id/edtImagePath"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Link ảnh hoặc resource URI"
+            android:padding="16dp"
+            android:inputType="textUri" />
+        <EditText
+            android:id="@+id/edtDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ngay"
+            android:padding="16dp"
+            android:inputType="textUri" />
+
+        <!-- Nút thêm -->
+        <Button
+            android:id="@+id/btnThem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Thêm sản phẩm"
+            android:layout_marginTop="12dp" />
+    </LinearLayout>
+</ScrollView>

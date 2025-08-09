@@ -7,6 +7,7 @@
     android:background="@color/black"
     android:layout_height="match_parent"
     tools:context=".useractivity.InformationUser_Activity">
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_setting"
         android:layout_width="match_parent"
@@ -69,6 +70,7 @@
             android:layout_gravity="center"
             android:src="@drawable/product_useravata_icon" />
 
+        <!-- Tên -->
         <LinearLayout
             android:layout_marginTop="30dp"
             android:layout_width="match_parent"
@@ -83,13 +85,14 @@
                 android:textSize="20sp" />
 
             <EditText
+                android:id="@+id/editTextName"
                 android:textColor="@color/white"
                 android:background="@drawable/bg_informationuser_edittext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-
         </LinearLayout>
 
+        <!-- Email -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -104,13 +107,14 @@
                 android:textSize="20sp" />
 
             <EditText
+                android:id="@+id/editTextEmail"
                 android:textColor="@color/white"
                 android:background="@drawable/bg_informationuser_edittext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-
         </LinearLayout>
 
+        <!-- Số điện thoại -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -125,13 +129,14 @@
                 android:textSize="20sp" />
 
             <EditText
+                android:id="@+id/editTextPhone"
                 android:textColor="@color/white"
                 android:background="@drawable/bg_informationuser_edittext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-
         </LinearLayout>
 
+        <!-- Địa chỉ -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -146,18 +151,20 @@
                 android:textSize="20sp" />
 
             <EditText
+                android:id="@+id/editTextAddress"
                 android:background="@drawable/bg_informationuser_edittext"
                 android:layout_width="match_parent"
                 android:textColor="@color/white"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
+        <!-- Nút Save -->
         <Button
+            android:id="@+id/btnSave"
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#D17842"
-
             android:text="Save"
             android:textSize="25sp"/>
     </LinearLayout>

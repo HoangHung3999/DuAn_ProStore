@@ -9,5 +9,7 @@
 
     <color name="colorPrimary">#D17842</color>
     <color name="gray">#1E1E1E</color>
+    <color name="red">#990000</color>
+
 
 </resources>

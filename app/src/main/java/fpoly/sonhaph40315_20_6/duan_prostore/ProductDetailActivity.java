@@ -10,14 +10,19 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.bumptech.glide.Glide;
+
+import fpoly.sonhaph40315_20_6.duan_prostore.model.SanPham;
+
 public class ProductDetailActivity extends AppCompatActivity {
 
-    private Product product;
+    private SanPham product;
     private String selectedSize = "M";
-    private String productDescription = "Marvel Avengers Kids T-Shirt - Áo thun trẻ em chất liệu cotton mềm mại, co giãn tốt.\n\n" +
+
+    // Mô tả mẫu (vì model chưa có trường description)
+    private final String defaultDescription = "Marvel Avengers Kids T-Shirt - Áo thun trẻ em chất liệu cotton mềm mại, co giãn tốt.\n\n" +
             "✔ Chất liệu: 100% Cotton\n" +
             "✔ Size: M - L - XL";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +38,13 @@ public class ProductDetailActivity extends AppCompatActivity {
         Button btnAddToCart = findViewById(R.id.btnAddToCart);
         ImageButton btnBack = findViewById(R.id.btnBack);
 
-        // Ánh xạ các nút size
+        // Nút size
         Button btnSizeM = findViewById(R.id.btnSizeM);
         Button btnSizeL = findViewById(R.id.btnSizeL);
         Button btnSizeXL = findViewById(R.id.btnSizeXL);
 
-        // Nhận dữ liệu sản phẩm
-        product = (Product) getIntent().getSerializableExtra("product");
+        // Nhận dữ liệu sản phẩm từ Intent
+        product = (SanPham) getIntent().getSerializableExtra("product");
         if (product == null) {
             showErrorAndExit();
             return;
@@ -51,9 +56,10 @@ public class ProductDetailActivity extends AppCompatActivity {
         // Xử lý chọn size
         setupSizeButtons(btnSizeM, btnSizeL, btnSizeXL);
 
-        // Xử lý nút thêm vào giỏ hàng
+        // Thêm vào giỏ hàng
         btnAddToCart.setOnClickListener(v -> addToCart());
 
+        // Quay lại
         btnBack.setOnClickListener(v -> finish());
     }
 
@@ -65,10 +71,27 @@ public class ProductDetailActivity extends AppCompatActivity {
     private void displayProductInfo(ImageView imgView, TextView nameView,
                                     TextView priceView, TextView descView,
                                     TextView deliveryView) {
-        imgView.setImageResource(product.getImageResId());
+        // Load ảnh: nếu imagePath là ID resource thì parse, nếu là URL thì dùng Glide
+        try {
+            int imageResId = Integer.parseInt(product.getImagePath());
+            imgView.setImageResource(imageResId);
+        } catch (NumberFormatException e) {
+            Glide.with(imgView.getContext())
+                    .load(product.getImagePath())
+                    .into(imgView);
+        }
+
         nameView.setText(product.getName());
-        priceView.setText(product.getPrice());
-        descView.setText(productDescription);
+        priceView.setText(String.format("%,.0f VND", product.getPrice()));
+
+        // Nếu không có category/size thì dùng mô tả mặc định
+        String desc = (product.getCategory() != null ? "Loại: " + product.getCategory() : "") +
+                (product.getSize() != null ? " - Size: " + product.getSize() : "");
+        if (desc.trim().isEmpty()) {
+            desc = defaultDescription;
+        }
+        descView.setText(desc);
+
         deliveryView.setText("Giao hàng từ 1-3 ngày");
     }
 
@@ -79,14 +102,14 @@ public class ProductDetailActivity extends AppCompatActivity {
                 updateSizeSelection(btn, sizeButtons);
             });
         }
-        // Chọn size M mặc định
+        // Mặc định chọn size M
         sizeButtons[0].setBackgroundTintList(
                 ContextCompat.getColorStateList(this, R.color.colorPrimary));
     }
 
     private void updateSizeSelection(Button selectedBtn, Button... allBtns) {
         for (Button btn : allBtns) {
-            int colorRes = btn == selectedBtn ? R.color.colorPrimary : R.color.gray;
+            int colorRes = (btn == selectedBtn) ? R.color.colorPrimary : R.color.gray;
             btn.setBackgroundTintList(ContextCompat.getColorStateList(this, colorRes));
         }
     }
